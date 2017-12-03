@@ -62,9 +62,9 @@ public class GameManager : MonoBehaviour
 	{
 		_cameraTransform.transform.position = _carTransform.position + new Vector3 (0f, 0f, -10f);
 
-		_dreamLevel -= _currentRatioDreamLevel * Time.fixedTime;
-		_globalTime += Time.fixedTime;
-		_timeCheckpoint -= Time.fixedTime;
+		_dreamLevel -= _currentRatioDreamLevel * Time.fixedDeltaTime;
+		_globalTime += Time.fixedDeltaTime;
+		_timeCheckpoint -= Time.fixedDeltaTime;
 
 
 		//ManagerSueno.UpdateLogic();
