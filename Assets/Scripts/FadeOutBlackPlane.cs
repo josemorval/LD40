@@ -7,6 +7,7 @@ public class FadeOutBlackPlane : MonoBehaviour {
 	public bool fadedOut = false;
 	public bool fadingIn = false;
 	public float fadeRate;
+	public bool durmiendo = false;
 	Material rend;
 	// Use this for initialization
 	void Start () {
@@ -35,6 +36,8 @@ public class FadeOutBlackPlane : MonoBehaviour {
 		}
 		if (rend.color.a > 0.99f)  rend.color = new Color(rend.color.r, rend.color.g, rend.color.b, 1);
 		if (rend.color.a < 0.01f)  rend.color = new Color(rend.color.r, rend.color.g, rend.color.b, 0);
+		if (rend.color.a > 0.5f) durmiendo = true;
+		else durmiendo = false;
 	}
 
 	public void FadeOut(){
