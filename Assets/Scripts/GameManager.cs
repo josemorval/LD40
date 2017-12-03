@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
 		SetupIntroLevel ();
 	}
 
-	void Update ()
+	void FixedUpdate ()
 	{
 		if (_gameState == STATE_INTRO) {
 			UpdateIntroLevel ();
@@ -62,9 +62,14 @@ public class GameManager : MonoBehaviour
 	{
 		_cameraTransform.transform.position = _carTransform.position + new Vector3 (0f, 0f, -10f);
 
-		_dreamLevel -= _currentRatioDreamLevel * Time.deltaTime;
-		_globalTime += Time.deltaTime;
-		_timeCheckpoint -= Time.deltaTime;
+		_dreamLevel -= _currentRatioDreamLevel * Time.fixedTime;
+		_globalTime += Time.fixedTime;
+		_timeCheckpoint -= Time.fixedTime;
+
+
+		//ManagerSueno.UpdateLogic();
+
+		//Logica del Sueno Manager
 
 		if (_dreamLevel < 0f || _timeCheckpoint < 0f) {
 			SetupGameOverLevel ();
@@ -109,8 +114,6 @@ public class GameManager : MonoBehaviour
 
 	public void UpdateCheckPoint (float time)
 	{
-		_checkPointList [_currentCheckPoint].gameObject.SetActive (false);
-
 		if (_currentCheckPoint != _checkPointList.Length - 1) {
 			_timeCheckpoint += time;
 			_timeCheckPointText.text = _timeCheckpoint.ToString ("#0") + "s";
@@ -172,6 +175,8 @@ public class GameManager : MonoBehaviour
 	[SerializeField]
 	private Transform[] _checkPointList;
 
+	[SerializeField]
+	private ManagerSueno _managerSueno;
 
 	private int STATE_INTRO = 0;
 	private int STATE_GAMEPLAY = 10;
