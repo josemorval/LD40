@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CarController : MonoBehaviour
+public class CarControllerBis : MonoBehaviour
 {
  
 	public float acceleration;
