@@ -39,7 +39,6 @@ public class GameManager : MonoBehaviour
 		_globalTime = 0f;
 		_dreamLevel = 1f;
 		_timeCheckpoint = _initTimeCheckPoint;
-		_cameraTransform.position = _gameplayContentTransform.position + new Vector3 (0f, 0f, -10f);
 
 	}
 
@@ -60,6 +59,8 @@ public class GameManager : MonoBehaviour
 
 	public void UpdateGameplayLevel ()
 	{
+		_cameraTransform.transform.position = _carTransform.position + new Vector3 (0f, 0f, -10f);
+
 		_dreamLevel -= _currentRatioDreamLevel * Time.deltaTime;
 		_globalTime += Time.deltaTime;
 		_timeCheckpoint -= Time.deltaTime;
@@ -131,6 +132,10 @@ public class GameManager : MonoBehaviour
 
 	[SerializeField]
 	private float _initTimeCheckPoint;
+
+	[SerializeField]
+	private Transform _carTransform;
+
 
 	private int STATE_INTRO = 0;
 	private int STATE_GAMEPLAY = 10;
