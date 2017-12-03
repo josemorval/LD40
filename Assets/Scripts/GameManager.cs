@@ -39,7 +39,8 @@ public class GameManager : MonoBehaviour
 		_globalTime = 0f;
 		_dreamLevel = 1f;
 		_timeCheckpoint = _initTimeCheckPoint;
-
+		_currentRatioDreamLevel = _ratioDreamLevelLap [_numberLaps];
+		SetupCheckPoint ();
 	}
 
 	public void SetupGameOverLevel ()
@@ -96,6 +97,34 @@ public class GameManager : MonoBehaviour
 		_uiTransform.gameObject.SetActive (d);
 	}
 
+	public void SetupCheckPoint ()
+	{
+		for (int i = 0; i < _checkPointList.Length; i++) {
+			_checkPointList [i].gameObject.SetActive (false);
+		}
+
+		_currentCheckPoint = 0;
+		_checkPointList [_currentCheckPoint].gameObject.SetActive (true);
+	}
+
+	public void UpdateCheckPoint (float time)
+	{
+		_checkPointList [_currentCheckPoint].gameObject.SetActive (false);
+
+		if (_currentCheckPoint != _checkPointList.Length - 1) {
+			_timeCheckpoint += time;
+			_timeCheckPointText.text = _timeCheckpoint.ToString ("#0") + "s";
+		} else {
+			_numberLaps++;
+			_currentRatioDreamLevel = _ratioDreamLevelLap [_numberLaps];
+		}
+
+		_currentCheckPoint++;
+		_currentCheckPoint %= _checkPointList.Length;
+		_checkPointList [_currentCheckPoint].gameObject.SetActive (true);
+	}
+
+
 
 	[SerializeField]
 	private Transform _cameraTransform;
@@ -123,9 +152,11 @@ public class GameManager : MonoBehaviour
 	private Transform _dreamLevelTransform;
 	[SerializeField]
 	private float _currentRatioDreamLevel;
+	[SerializeField]
+	private float[] _ratioDreamLevelLap;
 
 	[SerializeField]
-	private float _numberLaps;
+	private int _numberLaps;
 
 	[SerializeField]
 	private int _gameState;
@@ -135,6 +166,11 @@ public class GameManager : MonoBehaviour
 
 	[SerializeField]
 	private Transform _carTransform;
+
+	[SerializeField]
+	private int _currentCheckPoint;
+	[SerializeField]
+	private Transform[] _checkPointList;
 
 
 	private int STATE_INTRO = 0;
