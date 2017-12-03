@@ -12,7 +12,7 @@ public class ManagerSueno : MonoBehaviour
 
 	public float incrementoSueño;
 	public float rateRecuperacionSueño;
-	public float sueño = 0;
+	public float sueno = 0;
 	//public FadeOutBlackPlane fade;
 
 
@@ -26,7 +26,7 @@ public class ManagerSueno : MonoBehaviour
 
 
 	//void StartManager()
-	void Start ()
+	public void StartFake ()
 	{
 		pestañaASize = pestañaArriba.transform.localScale.x;
 		pestañaBSize = pestañaAbajo.transform.localScale.x;
@@ -34,24 +34,24 @@ public class ManagerSueno : MonoBehaviour
 		posicionB = pestañaAbajo.transform.position.y;
 
 		//Fade
-		FadeOut ();
+		//FadeOut ();
 		rend = planoNegro.GetComponent<SpriteRenderer> ().material;
 	}
 
 	//public void UpdateManager();
 	// Update is called once per frame
-	void FixedUpdate ()
+	public void FixedUpdateFake ()
 	{
 		if (!durmiendo) {
-			sueño += incrementoSueño;
-			if (sueño > 100)
-				sueño = 100;
-			print (sueño);
+			sueno += incrementoSueño;
+			if (sueno > 100)
+				sueno = 100;
+			print (sueno);
 		} else {
-			sueño -= incrementoSueño * rateRecuperacionSueño;
-			if (sueño <= 0)
-				sueño = 0;
-			print (sueño);
+			sueno -= incrementoSueño * rateRecuperacionSueño;
+			if (sueno <= 0)
+				sueno = 0;
+			print (sueno);
 		}
 
 		if ((Input.GetKey (KeyCode.Space) || Input.GetKey (KeyCode.Mouse0) || Input.GetKey (KeyCode.Mouse1))) {
@@ -100,7 +100,7 @@ public class ManagerSueno : MonoBehaviour
 		//fading = true;
 		//plane.GetComponent<MeshRenderer>().enabled = true;
 		//yield return new WaitForSeconds(2);
-		Material rend = plane.GetComponent<SpriteRenderer> ().material;
+		Material rend = plane.GetComponent<SpriteRenderer>().material;
 		for (float i = rend.color.a; i > 0; i -= fadeRate / 10) {
 			rend.color = new Color (rend.color.r, rend.color.g, rend.color.b, i);
 			//  mainAudio.GetComponent<AudioSource>().volume = 0.5f + i/2;

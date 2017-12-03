@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
 	{
 		ActivateLevels (false, false, false, false);
 		SetupIntroLevel ();
+		_managerSueno.StartFake();
 	}
 
 	void FixedUpdate ()
@@ -71,10 +72,12 @@ public class GameManager : MonoBehaviour
 
 		//Logica del Sueno Manager
 
-		if (_dreamLevel < 0f || _timeCheckpoint < 0f) {
+		_managerSueno.FixedUpdateFake();
+
+		if (_timeCheckpoint < 0f) {
 			SetupGameOverLevel ();
 		} else {
-			_dreamLevelTransform.localScale = new Vector3 (_dreamLevel, 1f, 1f);
+			_dreamLevelTransform.localScale = new Vector3 (_managerSueno.sueno/100, 1f, 1f);
 			_timeCheckPointText.text = _timeCheckpoint.ToString ("#0") + "s";
 			_globalTimeText.text = _globalTime.ToString ("#0") + "s";
 		}
@@ -119,7 +122,8 @@ public class GameManager : MonoBehaviour
 			_timeCheckPointText.text = _timeCheckpoint.ToString ("#0") + "s";
 		} else {
 			_numberLaps++;
-			_currentRatioDreamLevel = _ratioDreamLevelLap [_numberLaps];
+			_managerSueno.incrementoSueño += _ratioDreamLevelLap [_numberLaps];
+			//_currentRatioDreamLevel += _ratioDreamLevelLap [_numberLaps];
 		}
 
 		_currentCheckPoint++;
