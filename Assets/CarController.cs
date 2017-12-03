@@ -31,7 +31,7 @@
         // if (v == 0 && rb.velocity.magnitude > 0) v -= rozamiento;   INTENTO DE ROZAMIENTO FALLIDO XD
  
          Vector2 speed = transform.up * (v * acceleration);
-         print(rb.velocity.magnitude);
+//         print(rb.velocity.magnitude);
          currentSteering = currentSteering-rb.velocity.magnitude/10;
          if (rb.velocity.magnitude < maxSpeed) rb.AddForce(speed);  //AQUI VA LA MAXSPEED
 
