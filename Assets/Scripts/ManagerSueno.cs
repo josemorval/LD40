@@ -13,7 +13,10 @@ public class ManagerSueno : MonoBehaviour
 	public float incrementoSueño;
 	public float rateRecuperacionSueño;
 	public float sueno = 0;
+	float tiempoPunish = 0;
 	//public FadeOutBlackPlane fade;
+
+	public float ratePunishLvl1, ratePunishLvl2, duracionPunishLvl1, duracionPunishLvl2;
 
 
 	//Fade
@@ -48,15 +51,29 @@ public class ManagerSueno : MonoBehaviour
 				sueno = 100;
 			print (sueno);
 		} else {
-			sueno -= incrementoSueño * rateRecuperacionSueño;
+			if (tiempoPunish > 0) sueno -= rateRecuperacionSueño/2 - incrementoSueño/2;
+			else sueno -= rateRecuperacionSueño - incrementoSueño;
 			if (sueno <= 0)
 				sueno = 0;
 			print (sueno);
 		}
 
-		if ((Input.GetKey (KeyCode.Space) || Input.GetKey (KeyCode.Mouse0) || Input.GetKey (KeyCode.Mouse1))) {
+		if (tiempoPunish<=0){
+			if (sueno >= 33 && sueno <=65){
+				float rand = Random.Range(0f,1f);
+				if (rand <= ratePunishLvl1) tiempoPunish = duracionPunishLvl1 + Random.Range(0f,1f)/5 - 0.1f;
+			}else if (sueno>65){
+				float rand = Random.Range(0,1);
+				if (rand <= ratePunishLvl2) tiempoPunish = duracionPunishLvl2+  Random.Range(0f, 4f) - 2f;
+			}
+
+
+		}
+
+		if ((Input.GetKey (KeyCode.Space) || Input.GetKey (KeyCode.Mouse0) || Input.GetKey (KeyCode.Mouse1) || tiempoPunish > 0)) {
 			//fade negro
-			rend.color = new Color (rend.color.r, rend.color.g, rend.color.b, rend.color.a + fadeRate / 7);  
+			rend.color = new Color (rend.color.r, rend.color.g, rend.color.b, rend.color.a + fadeRate / 7);
+			if (tiempoPunish>0) tiempoPunish -= Time.fixedDeltaTime;  
 			//pestañas
 			if (pestañaArriba.transform.localPosition.y > 17.5f)
 				pestañaArriba.transform.position = new Vector3 (pestañaArriba.transform.position.x, pestañaArriba.transform.position.y - fadeRate, pestañaArriba.transform.position.z);       
