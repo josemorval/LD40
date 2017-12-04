@@ -53,11 +53,15 @@ public class ManagerSueno : MonoBehaviour
 		} else {
 			if (tiempoPunish > 0) sueno -= rateRecuperacionSueño/2 - incrementoSueño/2;
 			else sueno -= rateRecuperacionSueño - incrementoSueño;
+
 			if (sueno <= 0)
 				sueno = 0;
 			print (sueno);
 		}
 
+
+		//PENALIZACION SUEÑO VERSIÓN 1
+		/*
 		if (tiempoPunish<=0){
 			if (sueno >= 33 && sueno <=65){
 				float rand = Random.Range(0f,1f);
@@ -66,8 +70,17 @@ public class ManagerSueno : MonoBehaviour
 				float rand = Random.Range(0,1);
 				if (rand <= ratePunishLvl2) tiempoPunish = duracionPunishLvl2+  Random.Range(0f, 4f) - 2f;
 			}
+		}
+		*/
 
-
+		if (tiempoPunish<=0){
+			if (sueno >= 33){
+				float rand = Random.Range(0f,1f);
+				if (rand <= ratePunishLvl1 + sueno/12000) tiempoPunish = duracionPunishLvl1 - Random.Range(0f,1f)/5 + sueno/100;
+			}if (sueno>66){
+				float rand = Random.Range(0f,1f);
+				if (rand <= ratePunishLvl2 + sueno/12000) tiempoPunish = duracionPunishLvl2 +  Random.Range(0f,2f) - 1f;
+			}
 		}
 
 		if ((Input.GetKey (KeyCode.Space) || Input.GetKey (KeyCode.Mouse0) || Input.GetKey (KeyCode.Mouse1) || tiempoPunish > 0)) {

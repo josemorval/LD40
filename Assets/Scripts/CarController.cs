@@ -12,14 +12,20 @@ public class CarController : MonoBehaviour
 	public Transform camtransform;
 	float currentSteering;
 
+	[SerializeField]
+	private SoundManagerScript _managerSonido;
+
 	void Start ()
 	{
 		rb = GetComponent<Rigidbody2D> ();
 		currentSteering = steering;
+		_managerSonido.PlaySound("Camion", true);
+		_managerSonido.VolumeControl("Camion", 0);
 	}
 
 	void FixedUpdate ()
 	{
+		
 		currentSteering = steering;
 		float h = -Input.GetAxis ("Horizontal");
 		float v = Input.GetAxis ("Vertical");
@@ -37,6 +43,7 @@ public class CarController : MonoBehaviour
 		// if (v == 0 && rb.velocity.magnitude > 0) v -= rozamiento;   INTENTO DE ROZAMIENTO FALLIDO XD
  
 		Vector2 speed = transform.up * (v * acceleration);
+		_managerSonido.VolumeControl("Camion", (rb.velocity.magnitude * rb.velocity.magnitude)/20f);
 //         print(rb.velocity.magnitude);
 		currentSteering = currentSteering - rb.velocity.magnitude / 10;
 		if (rb.velocity.magnitude < maxSpeed)

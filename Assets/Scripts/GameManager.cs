@@ -182,6 +182,10 @@ public class GameManager : MonoBehaviour
 	[SerializeField]
 	private ManagerSueno _managerSueno;
 
+	[SerializeField]
+	private SoundManagerScript _managerSonido;
+
+
 	private int STATE_INTRO = 0;
 	private int STATE_GAMEPLAY = 10;
 	private int STATE_GAMEOVER = 100;
