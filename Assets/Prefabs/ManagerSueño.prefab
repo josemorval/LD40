@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4718630981461686}
   - component: {fileID: 114218644711818604}
   m_Layer: 0
-  m_Name: "ManagerSue\xF1o"
+  m_Name: "ManagerSuen\u0303o"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -55,7 +55,7 @@ MonoBehaviour:
   "pesta\xF1aAbajo": {fileID: 0}
   "incrementoSue\xF1o": 0.01
   "rateRecuperacionSue\xF1o": 5
-  "sue\xF1o": 0
+  sueno: 0
   fadedOut: 1
   fadingIn: 0
   fadeRate: 0.5

@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4952649936418792}
   - component: {fileID: 212803926214753146}
   m_Layer: 0
-  m_Name: "pesta\xF1aAbajo"
+  m_Name: "pestan\u0303aAbajo"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
