@@ -42,6 +42,10 @@ public class GameManager : MonoBehaviour
 		_timeCheckpoint = _initTimeCheckPoint;
 		_currentRatioDreamLevel = _ratioDreamLevelLap [_numberLaps];
 		SetupCheckPoint ();
+		_managerSonido.PlaySound("Ruido", true);
+		_managerSonido.VolumeControl("Ruido",2f);
+		_managerSonido.PlaySound("Canciones", true);
+		_managerSonido.VolumeControl("Canciones",1f);
 	}
 
 	public void SetupGameOverLevel ()

@@ -14,9 +14,13 @@ public class ManagerSueno : MonoBehaviour
 	public float rateRecuperacionSueño;
 	public float sueno = 0;
 	float tiempoPunish = 0;
+	float modificadorCancion = 1;
 	//public FadeOutBlackPlane fade;
 
 	public float ratePunishLvl1, ratePunishLvl2, duracionPunishLvl1, duracionPunishLvl2;
+
+	[SerializeField]
+	private SoundManagerScript _managerSonido;
 
 
 	//Fade
@@ -46,7 +50,7 @@ public class ManagerSueno : MonoBehaviour
 	public void FixedUpdateFake ()
 	{
 		if (!durmiendo) {
-			sueno += incrementoSueño;
+			sueno += incrementoSueño * modificadorCancion;
 			if (sueno > 100)
 				sueno = 100;
 			print (sueno);
@@ -82,6 +86,16 @@ public class ManagerSueno : MonoBehaviour
 				if (rand <= ratePunishLvl2 + sueno/12000) tiempoPunish = duracionPunishLvl2 +  Random.Range(0f,2f) - 1f;
 			}
 		}
+
+		if ((Input.GetKey (KeyCode.LeftShift)  || Input.GetKey (KeyCode.C))){
+			_managerSonido.VolumeControl("Switch", 2f);
+			_managerSonido.PlaySound("Switch", false);
+			_managerSonido.PlayRandomSound("Canciones", true);
+
+
+		}
+
+
 
 		if ((Input.GetKey (KeyCode.Space) || Input.GetKey (KeyCode.Mouse0) || Input.GetKey (KeyCode.Mouse1) || tiempoPunish > 0)) {
 			//fade negro

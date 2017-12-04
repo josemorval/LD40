@@ -784,7 +784,7 @@ Prefab:
     - target: {fileID: 114218644711818604, guid: 55d7bc800c880324f8719d98959b6034,
         type: 2}
       propertyPath: ratePunishLvl1
-      value: 0.001
+      value: 0.00075
       objectReference: {fileID: 0}
     - target: {fileID: 114218644711818604, guid: 55d7bc800c880324f8719d98959b6034,
         type: 2}
@@ -811,6 +811,11 @@ Prefab:
       propertyPath: "rateRecuperacionSue\xF1o"
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 114218644711818604, guid: 55d7bc800c880324f8719d98959b6034,
+        type: 2}
+      propertyPath: _managerSonido
+      value: 
+      objectReference: {fileID: 1567871124}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 55d7bc800c880324f8719d98959b6034, type: 2}
   m_IsPrefabParent: 0
@@ -2400,50 +2405,12 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!1 &1567871123
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1567871125}
-  - component: {fileID: 1567871124}
-  m_Layer: 0
-  m_Name: SoundManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1567871124
+--- !u!114 &1567871124 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1567871123}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
+  m_PrefabParentObject: {fileID: 114491879055258672, guid: fd7d699381dfd2c439cdef8f9402ed70,
+    type: 2}
+  m_PrefabInternal: {fileID: 2146957467}
   m_Script: {fileID: 11500000, guid: 2caf38e1e37f6124293f70dfee6a900c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  audios:
-  - name: Camion
-    listAudios:
-    - {fileID: 8300000, guid: 836bf54ccee8fd04f86eca31aa846510, type: 3}
---- !u!4 &1567871125
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1567871123}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.936068, y: -5.9104347, z: 14.30424}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1656339176
 GameObject:
   m_ObjectHideFlags: 0
@@ -2523,7 +2490,7 @@ MonoBehaviour:
   - {fileID: 255333282}
   - {fileID: 43216733}
   _managerSueno: {fileID: 726831686}
-  _managerSonido: {fileID: 0}
+  _managerSonido: {fileID: 1567871124}
 --- !u!4 &1656339178
 Transform:
   m_ObjectHideFlags: 0
@@ -3255,3 +3222,45 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!1001 &2146957467
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4425700149890180, guid: fd7d699381dfd2c439cdef8f9402ed70, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -5.936068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4425700149890180, guid: fd7d699381dfd2c439cdef8f9402ed70, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -5.9104347
+      objectReference: {fileID: 0}
+    - target: {fileID: 4425700149890180, guid: fd7d699381dfd2c439cdef8f9402ed70, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 14.30424
+      objectReference: {fileID: 0}
+    - target: {fileID: 4425700149890180, guid: fd7d699381dfd2c439cdef8f9402ed70, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4425700149890180, guid: fd7d699381dfd2c439cdef8f9402ed70, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4425700149890180, guid: fd7d699381dfd2c439cdef8f9402ed70, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4425700149890180, guid: fd7d699381dfd2c439cdef8f9402ed70, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4425700149890180, guid: fd7d699381dfd2c439cdef8f9402ed70, type: 2}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: fd7d699381dfd2c439cdef8f9402ed70, type: 2}
+  m_IsPrefabParent: 0
